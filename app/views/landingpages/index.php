@@ -4,4 +4,4 @@
 <a href="<?= URLROOT . '/lessen/index' ?>">Overzicht rijlessen</a>
 <br>
 <br>
-<a href="<?= URLROOT . '/wagenparken/index' ?>">Overzicht Mankementen</a>
+<a href="<?= URLROOT . '/mankementen/index' ?>">Overzicht Mankementen</a>

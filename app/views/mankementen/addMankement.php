@@ -2,9 +2,9 @@
 <h3><?= $data['title'] ?></h3>
 
 <form action="<?= URLROOT ?>/wagenparken/addKmstand" method="post">
-  <label for="Kmstand">Kilometerstand</label><br>
-  <input type="text" name="KmStand" id="KmStand"><br>
-  <div class="kmstandErrors"><?= $data['kmstandErrors']; ?></div>
+  <label for="mankementen">Mankementen</label><br>
+  <input type="text" name="mankementen" id="mankementen"><br>
+  <div class="mankementenErrors"><?= $data['mankementenErrors']; ?></div>
   <br>
   <input type="hidden" name="AutoId" value="<?= $data['AutoId'] ?>">
   <input type="submit" value="Toevoegen">

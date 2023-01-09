@@ -7,7 +7,7 @@
   <thead>
     <th>Type</th>
     <th>Kenteken</th>
-    <th>Kmstand toevoegen</th>
+    <th>Mankementen toevoegen</th>
   </thead>
   <tbody>
     <?= $data['rows'] ?>

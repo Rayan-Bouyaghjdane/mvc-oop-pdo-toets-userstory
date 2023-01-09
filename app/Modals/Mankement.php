@@ -1,6 +1,6 @@
 <?php
 
-class WagenPark
+class Mankement
 {
 
   private $db;
@@ -10,21 +10,21 @@ class WagenPark
     $this->db = new Database;
   }
 
-  public function getKmstand()
+  public function getMankement()
   {
-    $this->db->query("SELECT auto.Type, auto.Kenteken, kilometerstand.id
-    FROM kilometerstand 
+    $this->db->query("SELECT auto.Type, auto.Kenteken, mankement.Mankement
+    FROM mankement 
     INNER JOIN auto 
-    ON kilometerstand.AutoId = auto.id");
+    ON mankement.AutoId = auto.id");
 
     $result = $this->db->resultSet();
 
     return $result;
   }
 
-  public function addKmstand($post)
+  public function addMankement($post)
   {
-    $sql = "INSERT INTO kilometerstand (id, AutoId, Datum, KmStand) VALUES (NULL, :AutoId, '2022-12-12 10:53:01.000000', :KmStand)";
+    $sql = "INSERT INTO Mankement (id, AutoId, Datum, Mankement) VALUES (NULL, :AutoId, '2022-12-12 10:53:01.000000', :Mankement)";
     $this->db->query($sql);
     $this->db->bind(':AutoId', $post['AutoId']);
     $this->db->bind(':KmStand', $post['KmStand']);
