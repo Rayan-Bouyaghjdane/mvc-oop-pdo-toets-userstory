@@ -31,10 +31,12 @@ class Mankementen extends Controller
     }
 
     $data = [
-      'title' => 'Overzicht Mankementen',
-      'Naam' => ''
-      'rows' => $rows,
-
+      'Naam' => $result->Naam,
+      'Email' =>  $result->Email,
+      'Kenteken' => $result->Kenteken,
+      'Type' => $result->Type,
+      'title' => "Invoegen Mankementen",
+      'rows' => $rows
     ];
     $this->View('mankementen/index', $data);
   }
