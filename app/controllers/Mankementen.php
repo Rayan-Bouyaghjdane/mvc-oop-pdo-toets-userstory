@@ -24,14 +24,15 @@ class Mankementen extends Controller
     $rows = '';
     foreach ($result as $info) {
       $rows .= "<tr>
-        <td>$info->Type</td>
-        <td>$info->Kenteken</td>
-        <td><a href='" . URLROOT . "/mankementen/addMankement/{$info->id}'><img src='" . URLROOT . "/img/b_help.png' alt=''></a></td>
+        <td>$info->Datum</td>
+        <td>$info->Mankement</td>
+        <td><a href='" . URLROOT . "/mankementen/addMankement/2'><img src='" . URLROOT . "/img/b_help.png' alt=''></a></td>
       </tr>";
     }
 
     $data = [
-      'title' => 'Invoegen Mankementen',
+      'title' => 'Overzicht Mankementen',
+      'Naam' => ''
       'rows' => $rows,
 
     ];
