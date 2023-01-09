@@ -13,7 +13,7 @@ class Mankementen extends Controller
 
   public function index()
   {
-    $result = $this->mankementenModel->getKmStand();
+    $result = $this->mankementenModel->getMankement();
     // if ($result) {
     //   $instructeurNaam = $result[0]->INNA;
     // } else {

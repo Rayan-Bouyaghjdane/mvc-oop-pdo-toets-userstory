@@ -7,7 +7,7 @@
   <thead>
     <th>Type</th>
     <th>Kenteken</th>
-    <th>Mankementen toevoegen</th>
+    <th>Mankementen</th>
   </thead>
   <tbody>
     <?= $data['rows'] ?>
