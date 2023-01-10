@@ -22,30 +22,33 @@ class Mankementen extends Controller
     // var_dump($result);
 
     $rows = '';
+    $first = '';
+
     foreach ($result as $info) {
       $rows .= "<tr>
         <td>$info->Datum</td>
         <td>$info->Mankement</td>
-        <td><a href='" . URLROOT . "/mankementen/addMankement/2'><img src='" . URLROOT . "/img/b_help.png' alt=''></a></td>
       </tr>";
+      $first = "Auto van instructeur: $info->INNA <br>
+      Email: $info->EM <br>
+      Kenteken: $info->AK <br>
+      Type: $info->AT <br>
+      <br>";
     }
 
     $data = [
-      'Naam' => $result->Naam,
-      'Email' =>  $result->Email,
-      'Kenteken' => $result->Kenteken,
-      'Type' => $result->Type,
-      'title' => "Invoegen Mankementen",
-      'rows' => $rows
+      'title' => "Overzicht Mankementen",
+      'rows' => $rows,
+      'first' => $first,
     ];
     $this->View('mankementen/index', $data);
   }
 
-  public function addMankementen($AutoId = NULL)
+  public function addMankementen($instructeurId = 2)
   {
     $data = [
       'title' => 'Invoegen Mankementen',
-      'AutoId' => $AutoId,
+      'instructeurId' => $instructeurId,
       'MankementenErrors' => ''
     ];
 
@@ -57,7 +60,7 @@ class Mankementen extends Controller
 
       $data = [
         'title' => 'Invoegen Mankementen',
-        'AutoId' => $_POST['AutoId'],
+        'instructeurId' => $instructeurId,
         'MankementenErrors' => '',
       ];
 
@@ -70,7 +73,7 @@ class Mankementen extends Controller
         }
         header('Refresh:5; url=' . URLROOT . '/mankementen/index/');
       } else {
-        header('refresh:3; url=' . URLROOT . '/mankementen/addMankement/' . $data['AutoId']);
+        header('refresh:3; url=' . URLROOT . '/mankementen/addMankementen/' . $data['AutoId']);
       }
     }
     $this->view('mankementen/addMankementen', $data);
