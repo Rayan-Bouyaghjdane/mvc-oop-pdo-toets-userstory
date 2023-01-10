@@ -27,9 +27,8 @@ class Mankement
 
   public function addMankement($post)
   {
-    $sql = "INSERT INTO Mankement (id, AutoId, Datum, Mankement) VALUES (NULL, :AutoId, '2022-12-12 10:53:01.000000', :Mankement)";
+    $sql = "INSERT INTO Mankement (AutoId, Datum, Mankement) VALUES ( 2, '2023-1-10 10:53:01.000000', :Mankement)";
     $this->db->query($sql);
-    $this->db->bind(':AutoId', $post['AutoId']);
     $this->db->bind(':KmStand', $post['KmStand']);
     return $this->db->execute();
   }
