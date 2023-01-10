@@ -54,9 +54,7 @@ class Mankementen extends Controller
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // var_dump($_POST);
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-      var_dump($_POST);
 
       $data = [
         'title' => 'Invoegen Mankementen',
@@ -64,16 +62,29 @@ class Mankementen extends Controller
         'MankementenErrors' => '',
       ];
 
-      if (empty($data['MankementenErrors'])) {
-        $result = $this->mankementenModel->addKmstand($_POST);
+      if (!isset($_POST['Mankementen'])) {
+        $data['MankementenErrors'] = "Voer een makement in";
+        $this->view('mankementen/addMankementen', $data);
+        exit;
+      }
+
+      if (strlen($_POST['Mankementen']) > 50) {
+        $data['MankementenErrors'] = "Mankementen mag niet langer zijn dan 50 karakters";
+        $this->view('mankementen/addMankementen', $data);
+        exit;
+      }
+
+      try {
+        $result = $this->mankementenModel->addMankement($_POST);
         if ($result) {
           echo "<p>De nieuwe Mankementen is toegevoegd</p>";
         } else {
           echo "<p>De nieuwe Mankementen is niet toegevoegd. Probeer het opnieuw</p>";
         }
-        header('Refresh:5; url=' . URLROOT . '/mankementen/index/');
-      } else {
-        header('refresh:3; url=' . URLROOT . '/mankementen/addMankementen/' . $data['AutoId']);
+      } catch (PDOException $e) {
+        echo $e->getMessage();
+      } finally {
+        header('Refresh:5; url=' . URLROOT . '/mankementen');
       }
     }
     $this->view('mankementen/addMankementen', $data);

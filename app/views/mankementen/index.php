@@ -10,5 +10,5 @@
       <?php echo $data['rows'] ?>
     </tbody>
   </table>
-  <button><a href='addMankementen/2'>Mankement Toevoegen</a></button>
+  <button><a href='mankementen/addMankementen/2'>Mankement Toevoegen</a></button>
   <?php require(APPROOT . '/views/includes/footer.php') ?>

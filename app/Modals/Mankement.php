@@ -18,7 +18,9 @@ class Mankement
     ON Mankement.AutoId = Auto.Id
     INNER JOIN Instructeur
     ON Auto.InstructeurId = Instructeur.Id
-    WHERE Instructeur.Id = 2;");
+    WHERE Instructeur.Id = 2
+    ORDER BY Mankement.Datum DESC;");
+
 
     $result = $this->db->resultSet();
 
@@ -27,9 +29,9 @@ class Mankement
 
   public function addMankement($post)
   {
-    $sql = "INSERT INTO Mankement (AutoId, Datum, Mankement) VALUES ( 2, '2023-1-10 10:53:01.000000', :Mankement)";
+    $sql = "INSERT INTO Mankement (AutoId, Mankement) VALUES ( 2, :Mankementen)";
     $this->db->query($sql);
-    $this->db->bind(':KmStand', $post['KmStand']);
+    $this->db->bind(':Mankementen', $post['Mankementen']);
     return $this->db->execute();
   }
 }
